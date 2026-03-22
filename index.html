@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GN'R Collection</title>
+<link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --deep: #111114;
+    --surface: #1a1a1f;
+    --card: #1e1e24;
+    --border: #2e2e38;
+    --red: #c0392b;
+    --red-hot: #e74c3c;
+    --gold: #d4a017;
+    --gold-light: #f0c040;
+    --white: #f0ede8;
+    --muted: #7a7870;
+    --skull: #2a2a30;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--black);
+    color: var(--white);
+    min-height: 100vh;
+  }
+
+  /* ====== HEADER ====== */
+  header {
+    background: linear-gradient(180deg, #0a0a0a 0%, #1a0808 60%, #0a0a0a 100%);
+    border-bottom: 2px solid var(--red);
+    padding: 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 30px rgba(192,57,43,0.3);
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-shrink: 0;
+  }
+  .logo-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+  }
+  .logo-text h1 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 28px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(212,160,23,0.5);
+  }
+  .logo-text p {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--muted);
+    text-transform: uppercase;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .stats-bar {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+  .stat {
+    text-align: center;
+    padding: 6px 14px;
+    background: var(--skull);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+  }
+  .stat-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .btn-add {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 3px;
+    transition: background 0.2s, transform 0.1s;
+    white-space: nowrap;
+  }
+  .btn-add:hover { background: var(--red-hot); transform: translateY(-1px); }
+
+  /* ====== FILTERS ====== */
+  .filters-wrap {
+    background: var(--deep);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+  }
+  .filters-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    background: var(--skull);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--red);
+    border-color: var(--red);
+    color: #fff;
+  }
+  .filter-btn.wish-filter.active {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+  }
+  .search-wrap {
+    margin-left: auto;
+    position: relative;
+  }
+  .search-input {
+    background: var(--skull);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 7px 14px 7px 36px;
+    border-radius: 20px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 13px;
+    width: 200px;
+    outline: none;
+    transition: border 0.2s;
+  }
+  .search-input:focus { border-color: var(--red); }
+  .search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  /* ====== MAIN ====== */
+  main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .section-line { flex: 1; height: 1px; background: var(--border); }
+  .section-count {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+  }
+
+  /* ====== GRID ====== */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  /* ====== CARD ====== */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+    position: relative;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: #444;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  }
+  .card.wishlist {
+    border-color: rgba(212,160,23,0.4);
+  }
+  .card.wishlist:hover { border-color: var(--gold); }
+  .card-thumb {
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 52px;
+    position: relative;
+    background: var(--skull);
+  }
+  .cat-badge {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 2px;
+    background: var(--red);
+    color: #fff;
+  }
+  .cat-badge.affiche { background: #1a5276; }
+  .cat-badge.vetement { background: #1e8449; }
+  .cat-badge.objet { background: #6c3483; }
+  .wish-star {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.7);
+    border: none;
+    color: var(--muted);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .wish-star:hover { background: rgba(212,160,23,0.2); color: var(--gold); }
+  .wish-star.active { color: var(--gold); background: rgba(212,160,23,0.2); }
+  .card-body { padding: 14px; }
+  .card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: var(--white);
+  }
+  .card-sub {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid var(--border);
+    padding-top: 10px;
+  }
+  .card-value {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--gold);
+  }
+  .card-value span { font-size: 11px; color: var(--muted); font-weight: 400; }
+  .card-actions { display: flex; gap: 6px; }
+  .btn-icon {
+    background: var(--skull);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+  }
+  .btn-icon:hover { color: var(--white); border-color: #555; }
+  .btn-icon.del:hover { color: var(--red-hot); border-color: var(--red); }
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--muted);
+    grid-column: 1 / -1;
+  }
+  .empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
+  .empty-state p { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; letter-spacing: 1px; }
+
+  /* ====== MODAL ====== */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    padding: 20px;
+    display: none;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    width: 100%;
+    max-width: 480px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+  }
+  .modal-head {
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .modal-head h2 {
+    font-family: 'Metal Mania', cursive;
+    font-size: 20px;
+    color: var(--gold);
+  }
+  .modal-close {
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 20px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 4px;
+  }
+  .modal-close:hover { color: var(--white); }
+  .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+  .form-row { display: flex; gap: 12px; }
+  .form-group { display: flex; flex-direction: column; gap: 5px; flex: 1; }
+  .form-group label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    background: var(--skull);
+    border: 1px solid var(--border);
+    color: var(--white);
+    padding: 10px 12px;
+    border-radius: 4px;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.2s;
+  }
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus { border-color: var(--red); }
+  .form-group select option { background: var(--surface); }
+  .modal-foot {
+    padding: 16px 24px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+  .btn-cancel {
+    background: none;
+    border: 1px solid var(--border);
+    color: var(--muted);
+    padding: 9px 18px;
+    border-radius: 4px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-cancel:hover { border-color: #555; color: var(--white); }
+  .btn-save {
+    background: var(--red);
+    border: none;
+    color: #fff;
+    padding: 9px 22px;
+    border-radius: 4px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-save:hover { background: var(--red-hot); }
+  .wishlist-check {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .wishlist-check input { accent-color: var(--gold); width: 16px; height: 16px; cursor: pointer; }
+  .wishlist-check span {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  /* ====== VALEUR TOTALE ====== */
+  .value-banner {
+    background: linear-gradient(135deg, #1a0d00 0%, #1a1000 100%);
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 6px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .value-label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .value-amount {
+    font-family: 'Metal Mania', cursive;
+    font-size: 32px;
+    color: var(--gold);
+    text-shadow: 0 0 20px rgba(212,160,23,0.3);
+  }
+  .value-breakdown {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .val-item { text-align: center; }
+  .val-item .num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--white);
+  }
+  .val-item .lbl {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 600px) {
+    .stats-bar { display: none; }
+    .header-inner { padding: 12px 16px; }
+    main { padding: 16px; }
+    .grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ====== HEADER ====== -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="24" cy="24" r="23" stroke="#d4a017" stroke-width="1.5" fill="#1a0808"/>
+        <text x="24" y="20" text-anchor="middle" font-family="Metal Mania,serif" font-size="11" fill="#d4a017">GN'R</text>
+        <path d="M12 26 Q14 22 17 24 Q20 26 22 23 Q24 20 26 23 Q28 26 31 24 Q34 22 36 26" stroke="#c0392b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <path d="M18 31 L22 27 L24 29 L26 27 L30 31" stroke="#d4a017" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="logo-text">
+        <h1>GN'R Collection</h1>
+        <p>Welcome to the Jungle</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="stats-bar">
+        <div class="stat">
+          <div class="stat-num" id="count-total">0</div>
+          <div class="stat-label">Items</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num" id="count-wish">0</div>
+          <div class="stat-label">Wishlist</div>
+        </div>
+      </div>
+      <button class="btn-add" onclick="openModal()">+ Ajouter</button>
+    </div>
+  </div>
+</header>
+
+<!-- ====== FILTERS ====== -->
+<div class="filters-wrap">
+  <div class="filters-inner">
+    <button class="filter-btn active" data-cat="all" onclick="setFilter('all',this)">Tout</button>
+    <button class="filter-btn" data-cat="vinyle" onclick="setFilter('vinyle',this)">🎵 Vinyles / CDs</button>
+    <button class="filter-btn" data-cat="affiche" onclick="setFilter('affiche',this)">🖼️ Affiches</button>
+    <button class="filter-btn" data-cat="vetement" onclick="setFilter('vetement',this)">👕 Vêtements</button>
+    <button class="filter-btn" data-cat="objet" onclick="setFilter('objet',this)">🎸 Objets</button>
+    <button class="filter-btn wish-filter" data-cat="wishlist" onclick="setFilter('wishlist',this)">⭐ Wishlist</button>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input class="search-input" type="text" placeholder="Rechercher…" oninput="search(this.value)" id="search-box">
+    </div>
+  </div>
+</div>
+
+<!-- ====== MAIN ====== -->
+<main>
+  <!-- Valeur totale -->
+  <div class="value-banner">
+    <div>
+      <div class="value-label">Valeur estimée</div>
+      <div class="value-amount" id="val-total">0 €</div>
+    </div>
+    <div class="value-breakdown">
+      <div class="val-item"><div class="num" id="val-vinyle">0 €</div><div class="lbl">Vinyles/CDs</div></div>
+      <div class="val-item"><div class="num" id="val-affiche">0 €</div><div class="lbl">Affiches</div></div>
+      <div class="val-item"><div class="num" id="val-vetement">0 €</div><div class="lbl">Vêtements</div></div>
+      <div class="val-item"><div class="num" id="val-objet">0 €</div><div class="lbl">Objets</div></div>
+    </div>
+  </div>
+
+  <!-- Section header -->
+  <div class="section-header">
+    <span class="section-title">Ma Collection</span>
+    <div class="section-line"></div>
+    <span class="section-count" id="section-count">0 items</span>
+  </div>
+
+  <!-- Grid -->
+  <div class="grid" id="grid"></div>
+</main>
+
+<!-- ====== MODAL ====== -->
+<div class="modal-backdrop" id="modal">
+  <div class="modal">
+    <div class="modal-head">
+      <h2 id="modal-title">Ajouter un item</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>Titre *</label>
+        <input type="text" id="f-title" placeholder="ex: Appetite for Destruction — Vinyle Original">
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Catégorie *</label>
+          <select id="f-cat">
+            <option value="vinyle">🎵 Vinyle / CD</option>
+            <option value="affiche">🖼️ Affiche / Poster</option>
+            <option value="vetement">👕 T-shirt / Vêtement</option>
+            <option value="objet">🎸 Figurine / Objet</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Année</label>
+          <input type="text" id="f-year" placeholder="ex: 1987">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Valeur estimée (€)</label>
+          <input type="number" id="f-value" placeholder="0" min="0">
+        </div>
+        <div class="form-group">
+          <label>État</label>
+          <select id="f-state">
+            <option value="">— non précisé</option>
+            <option value="Mint">Mint (parfait)</option>
+            <option value="Excellent">Excellent</option>
+            <option value="Bon">Bon état</option>
+            <option value="Passable">Passable</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Notes</label>
+        <textarea id="f-notes" rows="2" placeholder="Détails, provenance, numéro de série…"></textarea>
+      </div>
+      <label class="wishlist-check">
+        <input type="checkbox" id="f-wish">
+        <span>⭐ Ajouter à la Wishlist</span>
+      </label>
+    </div>
+    <div class="modal-foot">
+      <button class="btn-cancel" onclick="closeModal()">Annuler</button>
+      <button class="btn-save" onclick="saveItem()">Sauvegarder</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const EMOJI = { vinyle:'🎵', affiche:'🖼️', vetement:'👕', objet:'🎸' };
+const LABEL = { vinyle:'Vinyle/CD', affiche:'Affiche', vetement:'Vêtement', objet:'Objet' };
+
+let items = JSON.parse(localStorage.getItem('gnr-items') || '[]');
+let editId = null;
+let currentFilter = 'all';
+let searchQuery = '';
+
+// ---- Default demo items ----
+if (!items.length) {
+  items = [
+    { id: 1, title: "Appetite for Destruction", cat: "vinyle", year: "1987", value: 120, state: "Excellent", notes: "Première pression US, pochette originale", wish: false },
+    { id: 2, title: "Use Your Illusion I", cat: "vinyle", year: "1991", value: 65, state: "Bon", notes: "Double vinyle, gatefold", wish: false },
+    { id: 3, title: "Illusion Tour 1992 — Poster", cat: "affiche", year: "1992", value: 200, state: "Mint", notes: "Format 60x90, jamais encadrée", wish: false },
+    { id: 4, title: "T-shirt Skull & Roses", cat: "vetement", year: "1991", value: 85, state: "Bon", notes: "Taille L, légèrement délavé", wish: false },
+    { id: 5, title: "Figurine Axl Rose NECA", cat: "objet", year: "2012", value: 150, state: "Mint", notes: "En boîte, jamais ouverte", wish: false },
+    { id: 6, title: "Use Your Illusion II", cat: "vinyle", year: "1991", value: 60, state: "Bon", notes: "", wish: true },
+    { id: 7, title: "Lies — EP Vinyle", cat: "vinyle", year: "1988", value: 45, state: "Passable", notes: "Quelques éraflures mineures", wish: false },
+    { id: 8, title: "Affiche Chinese Democracy Tour", cat: "affiche", year: "2008", value: 90, state: "Excellent", notes: "Signée à l'encre, certificat inclus", wish: true },
+  ];
+  save();
+}
+
+function save() { localStorage.setItem('gnr-items', JSON.stringify(items)); }
+
+function nextId() { return items.length ? Math.max(...items.map(i=>i.id)) + 1 : 1; }
+
+// ---- RENDER ----
+function render() {
+  const q = searchQuery.toLowerCase();
+  let visible = items.filter(item => {
+    if (currentFilter === 'wishlist') return item.wish;
+    if (currentFilter !== 'all' && item.cat !== currentFilter) return false;
+    if (q && !item.title.toLowerCase().includes(q) && !item.notes.toLowerCase().includes(q)) return false;
+    return true;
+  });
+
+  // Stats
+  document.getElementById('count-total').textContent = items.length;
+  document.getElementById('count-wish').textContent = items.filter(i=>i.wish).length;
+  document.getElementById('section-count').textContent = visible.length + ' item' + (visible.length !== 1 ? 's' : '');
+
+  // Valeur
+  const catVal = { vinyle:0, affiche:0, vetement:0, objet:0 };
+  items.forEach(i => { if (!i.wish) catVal[i.cat] += (parseFloat(i.value)||0); });
+  const total = Object.values(catVal).reduce((a,b)=>a+b,0);
+  document.getElementById('val-total').textContent = total.toLocaleString('fr-FR') + ' €';
+  for (const [k,v] of Object.entries(catVal)) {
+    const el = document.getElementById('val-'+k);
+    if (el) el.textContent = v.toLocaleString('fr-FR') + ' €';
+  }
+
+  const grid = document.getElementById('grid');
+  if (!visible.length) {
+    grid.innerHTML = `<div class="empty-state"><div class="empty-icon">🎸</div><p>Aucun item trouvé. Welcome to the Jungle!</p></div>`;
+    return;
+  }
+  grid.innerHTML = visible.map(item => `
+    <div class="card${item.wish?' wishlist':''}" data-id="${item.id}">
+      <div class="card-thumb" style="background:${thumbBg(item.cat)}">
+        <span style="filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))">${EMOJI[item.cat]}</span>
+        <span class="cat-badge ${item.cat}">${LABEL[item.cat]}</span>
+        <button class="wish-star${item.wish?' active':''}" onclick="toggleWish(${item.id})" title="Wishlist">⭐</button>
+      </div>
+      <div class="card-body">
+        <div class="card-title">${esc(item.title)}</div>
+        <div class="card-sub">${[item.year, item.state].filter(Boolean).join(' · ') || '&nbsp;'}</div>
+        <div class="card-footer">
+          <div class="card-value">${item.value ? item.value.toLocaleString('fr-FR')+'€' : '—'} <span>estimé</span></div>
+          <div class="card-actions">
+            <button class="btn-icon" onclick="editItem(${item.id})" title="Modifier">✏️</button>
+            <button class="btn-icon del" onclick="deleteItem(${item.id})" title="Supprimer">🗑️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `).join('');
+}
+
+function thumbBg(cat) {
+  const m = { vinyle:'#1a0808', affiche:'#08101a', vetement:'#081a0d', objet:'#14081a' };
+  return m[cat] || '#111';
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+
+// ---- FILTER / SEARCH ----
+function setFilter(cat, btn) {
+  currentFilter = cat;
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  render();
+}
+function search(q) { searchQuery = q; render(); }
+
+// ---- WISHLIST ----
+function toggleWish(id) {
+  const item = items.find(i=>i.id===id);
+  if (item) { item.wish = !item.wish; save(); render(); }
+}
+
+// ---- MODAL ----
+function openModal(id = null) {
+  editId = id;
+  const item = id ? items.find(i=>i.id===id) : null;
+  document.getElementById('modal-title').textContent = id ? 'Modifier l\'item' : 'Ajouter un item';
+  document.getElementById('f-title').value = item?.title || '';
+  document.getElementById('f-cat').value = item?.cat || 'vinyle';
+  document.getElementById('f-year').value = item?.year || '';
+  document.getElementById('f-value').value = item?.value || '';
+  document.getElementById('f-state').value = item?.state || '';
+  document.getElementById('f-notes').value = item?.notes || '';
+  document.getElementById('f-wish').checked = item?.wish || false;
+  document.getElementById('modal').classList.add('open');
+  document.getElementById('f-title').focus();
+}
+function closeModal() { document.getElementById('modal').classList.remove('open'); editId = null; }
+function saveItem() {
+  const title = document.getElementById('f-title').value.trim();
+  if (!title) { document.getElementById('f-title').focus(); return; }
+  const data = {
+    title,
+    cat: document.getElementById('f-cat').value,
+    year: document.getElementById('f-year').value.trim(),
+    value: parseFloat(document.getElementById('f-value').value) || 0,
+    state: document.getElementById('f-state').value,
+    notes: document.getElementById('f-notes').value.trim(),
+    wish: document.getElementById('f-wish').checked,
+  };
+  if (editId) {
+    Object.assign(items.find(i=>i.id===editId), data);
+  } else {
+    items.push({ id: nextId(), ...data });
+  }
+  save(); closeModal(); render();
+}
+function editItem(id) { openModal(id); }
+function deleteItem(id) {
+  if (confirm('Supprimer cet item de la collection ?')) {
+    items = items.filter(i=>i.id!==id);
+    save(); render();
+  }
+}
+
+// Close on backdrop click
+document.getElementById('modal').addEventListener('click', e => {
+  if (e.target === document.getElementById('modal')) closeModal();
+});
+
+// Keyboard
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+});
+
+render();
+</script>
+</body>
+</html>
