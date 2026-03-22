@@ -7,523 +7,145 @@
 <link href="https://fonts.googleapis.com/css2?family=Metal+Mania&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --black: #0a0a0a;
-    --deep: #111114;
-    --surface: #1a1a1f;
-    --card: #1e1e24;
-    --border: #2e2e38;
-    --red: #c0392b;
-    --red-hot: #e74c3c;
-    --gold: #d4a017;
-    --gold-light: #f0c040;
-    --white: #f0ede8;
-    --muted: #7a7870;
-    --skull: #2a2a30;
+    --black: #0a0a0a; --deep: #111114; --surface: #1a1a1f; --card: #1e1e24;
+    --border: #2e2e38; --red: #c0392b; --red-hot: #e74c3c;
+    --gold: #d4a017; --gold-light: #f0c040; --white: #f0ede8; --muted: #7a7870; --skull: #2a2a30;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body {
-    font-family: 'Barlow', sans-serif;
-    background: var(--black);
-    color: var(--white);
-    min-height: 100vh;
-  }
+  body { font-family: 'Barlow', sans-serif; background: var(--black); color: var(--white); min-height: 100vh; }
 
-  /* ====== HEADER ====== */
-  header {
-    background: linear-gradient(180deg, #0a0a0a 0%, #1a0808 60%, #0a0a0a 100%);
-    border-bottom: 2px solid var(--red);
-    padding: 0;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 4px 30px rgba(192,57,43,0.3);
-  }
-  .header-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 16px 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 20px;
-  }
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    flex-shrink: 0;
-  }
-  .logo-icon {
-    width: 48px;
-    height: 48px;
-    flex-shrink: 0;
-  }
-  .logo-text h1 {
-    font-family: 'Metal Mania', cursive;
-    font-size: 28px;
-    color: var(--gold);
-    letter-spacing: 2px;
-    line-height: 1;
-    text-shadow: 0 0 20px rgba(212,160,23,0.5);
-  }
-  .logo-text p {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--muted);
-    text-transform: uppercase;
-  }
-  .header-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-  }
-  .stats-bar {
-    display: flex;
-    gap: 20px;
-    align-items: center;
-  }
-  .stat {
-    text-align: center;
-    padding: 6px 14px;
-    background: var(--skull);
-    border: 1px solid var(--border);
-    border-radius: 4px;
-  }
-  .stat-num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: var(--gold);
-    line-height: 1;
-  }
-  .stat-label {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
-  .btn-add {
-    background: var(--red);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    border-radius: 3px;
-    transition: background 0.2s, transform 0.1s;
-    white-space: nowrap;
-  }
+  header { background: linear-gradient(180deg,#0a0a0a 0%,#1a0808 60%,#0a0a0a 100%); border-bottom: 2px solid var(--red); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 30px rgba(192,57,43,0.3); }
+  .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .logo { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
+  .logo-icon { width: 48px; height: 48px; flex-shrink: 0; }
+  .logo-text h1 { font-family: 'Metal Mania', cursive; font-size: 28px; color: var(--gold); letter-spacing: 2px; line-height: 1; text-shadow: 0 0 20px rgba(212,160,23,0.5); }
+  .logo-text p { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 4px; color: var(--muted); text-transform: uppercase; }
+  .header-actions { display: flex; align-items: center; gap: 12px; }
+  .stats-bar { display: flex; gap: 20px; align-items: center; }
+  .stat { text-align: center; padding: 6px 14px; background: var(--skull); border: 1px solid var(--border); border-radius: 4px; }
+  .stat-num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 20px; color: var(--gold); line-height: 1; }
+  .stat-label { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+  .btn-add { background: var(--red); color: #fff; border: none; padding: 10px 20px; font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border-radius: 3px; transition: background .2s, transform .1s; white-space: nowrap; }
   .btn-add:hover { background: var(--red-hot); transform: translateY(-1px); }
 
-  /* ====== FILTERS ====== */
-  .filters-wrap {
-    background: var(--deep);
-    border-bottom: 1px solid var(--border);
-    padding: 12px 24px;
-  }
-  .filters-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    gap: 10px;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-  .filter-btn {
-    background: var(--skull);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 6px 14px;
-    border-radius: 20px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .filter-btn:hover, .filter-btn.active {
-    background: var(--red);
-    border-color: var(--red);
-    color: #fff;
-  }
-  .filter-btn.wish-filter.active {
-    background: var(--gold);
-    border-color: var(--gold);
-    color: var(--black);
-  }
-  .search-wrap {
-    margin-left: auto;
-    position: relative;
-  }
-  .search-input {
-    background: var(--skull);
-    border: 1px solid var(--border);
-    color: var(--white);
-    padding: 7px 14px 7px 36px;
-    border-radius: 20px;
-    font-family: 'Barlow', sans-serif;
-    font-size: 13px;
-    width: 200px;
-    outline: none;
-    transition: border 0.2s;
-  }
+  .filters-wrap { background: var(--deep); border-bottom: 1px solid var(--border); padding: 12px 24px; }
+  .filters-inner { max-width: 1200px; margin: 0 auto; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  .filter-btn { background: var(--skull); border: 1px solid var(--border); color: var(--muted); padding: 6px 14px; border-radius: 20px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; cursor: pointer; transition: all .2s; }
+  .filter-btn:hover, .filter-btn.active { background: var(--red); border-color: var(--red); color: #fff; }
+  .filter-btn.wish-filter.active { background: var(--gold); border-color: var(--gold); color: var(--black); }
+  .search-wrap { margin-left: auto; position: relative; }
+  .search-input { background: var(--skull); border: 1px solid var(--border); color: var(--white); padding: 7px 14px 7px 36px; border-radius: 20px; font-family: 'Barlow', sans-serif; font-size: 13px; width: 200px; outline: none; transition: border .2s; }
   .search-input:focus { border-color: var(--red); }
-  .search-icon {
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--muted);
-    font-size: 14px;
-  }
+  .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 14px; }
 
-  /* ====== MAIN ====== */
-  main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 24px;
-  }
-  .section-header {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 16px;
-  }
-  .section-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 13px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
+  main { max-width: 1200px; margin: 0 auto; padding: 24px; }
+  .section-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
+  .section-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--muted); }
   .section-line { flex: 1; height: 1px; background: var(--border); }
-  .section-count {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    color: var(--muted);
-  }
+  .section-count { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; color: var(--muted); }
 
-  /* ====== GRID ====== */
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-  }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
 
-  /* ====== CARD ====== */
-  .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 6px;
-    overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
-    position: relative;
-  }
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: #444;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
-  }
-  .card.wishlist {
-    border-color: rgba(212,160,23,0.4);
-  }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; transition: transform .2s, border-color .2s, box-shadow .2s; position: relative; }
+  .card:hover { transform: translateY(-3px); border-color: #444; box-shadow: 0 8px 30px rgba(0,0,0,.5); }
+  .card.wishlist { border-color: rgba(212,160,23,0.4); }
   .card.wishlist:hover { border-color: var(--gold); }
-  .card-thumb {
-    height: 140px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 52px;
-    position: relative;
-    background: var(--skull);
-  }
-  .cat-badge {
-    position: absolute;
-    top: 8px;
-    left: 8px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 2px;
-    background: var(--red);
-    color: #fff;
-  }
+
+  .card-thumb { height: 180px; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; background: var(--skull); cursor: pointer; }
+  .card-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+  .card:hover .card-thumb img { transform: scale(1.04); }
+  .thumb-emoji { font-size: 52px; filter: drop-shadow(0 2px 6px rgba(0,0,0,.6)); }
+  .cat-badge { position: absolute; top: 8px; left: 8px; font-family: 'Barlow Condensed', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 3px 8px; border-radius: 2px; background: var(--red); color: #fff; z-index: 2; }
   .cat-badge.affiche { background: #1a5276; }
   .cat-badge.vetement { background: #1e8449; }
   .cat-badge.objet { background: #6c3483; }
-  .wish-star {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-    background: rgba(0,0,0,0.7);
-    border: none;
-    color: var(--muted);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
-  .wish-star:hover { background: rgba(212,160,23,0.2); color: var(--gold); }
-  .wish-star.active { color: var(--gold); background: rgba(212,160,23,0.2); }
+  .wish-star { position: absolute; top: 8px; right: 8px; z-index: 2; background: rgba(0,0,0,.7); border: none; color: var(--muted); width: 30px; height: 30px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: all .2s; }
+  .wish-star:hover { background: rgba(212,160,23,.2); color: var(--gold); }
+  .wish-star.active { color: var(--gold); background: rgba(212,160,23,.2); }
+  .photo-hint { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(0deg,rgba(0,0,0,.7) 0%,transparent 100%); color: rgba(255,255,255,.7); font-size: 11px; font-family: 'Barlow Condensed', sans-serif; letter-spacing: 1px; text-align: center; padding: 10px 4px 6px; opacity: 0; transition: opacity .2s; z-index: 1; }
+  .card:hover .photo-hint { opacity: 1; }
+
   .card-body { padding: 14px; }
-  .card-title {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 17px;
-    margin-bottom: 4px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: var(--white);
-  }
-  .card-sub {
-    font-size: 12px;
-    color: var(--muted);
-    margin-bottom: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .card-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-top: 1px solid var(--border);
-    padding-top: 10px;
-  }
-  .card-value {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 18px;
-    color: var(--gold);
-  }
+  .card-title { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 17px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card-sub { font-size: 12px; color: var(--muted); margin-bottom: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .card-footer { display: flex; align-items: center; justify-content: space-between; border-top: 1px solid var(--border); padding-top: 10px; }
+  .card-value { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; color: var(--gold); }
   .card-value span { font-size: 11px; color: var(--muted); font-weight: 400; }
   .card-actions { display: flex; gap: 6px; }
-  .btn-icon {
-    background: var(--skull);
-    border: 1px solid var(--border);
-    color: var(--muted);
-    width: 30px;
-    height: 30px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-  }
+  .btn-icon { background: var(--skull); border: 1px solid var(--border); color: var(--muted); width: 30px; height: 30px; border-radius: 4px; cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; transition: all .2s; }
   .btn-icon:hover { color: var(--white); border-color: #555; }
   .btn-icon.del:hover { color: var(--red-hot); border-color: var(--red); }
-  .empty-state {
-    text-align: center;
-    padding: 60px 20px;
-    color: var(--muted);
-    grid-column: 1 / -1;
-  }
-  .empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; opacity: 0.4; }
+  .empty-state { text-align: center; padding: 60px 20px; color: var(--muted); grid-column: 1 / -1; }
+  .empty-state .empty-icon { font-size: 48px; margin-bottom: 12px; opacity: .4; }
   .empty-state p { font-family: 'Barlow Condensed', sans-serif; font-size: 16px; letter-spacing: 1px; }
 
-  /* ====== MODAL ====== */
-  .modal-backdrop {
-    position: fixed; inset: 0;
-    background: rgba(0,0,0,0.85);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 200;
-    padding: 20px;
-    display: none;
-  }
+  .value-banner { background: linear-gradient(135deg,#1a0d00 0%,#1a1000 100%); border: 1px solid rgba(212,160,23,.3); border-radius: 6px; padding: 16px 24px; margin-bottom: 24px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .value-label { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--gold); opacity: .7; }
+  .value-amount { font-family: 'Metal Mania', cursive; font-size: 32px; color: var(--gold); text-shadow: 0 0 20px rgba(212,160,23,.3); }
+  .value-breakdown { display: flex; gap: 20px; flex-wrap: wrap; }
+  .val-item { text-align: center; }
+  .val-item .num { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 16px; }
+  .val-item .lbl { font-size: 10px; color: var(--muted); letter-spacing: 1px; text-transform: uppercase; }
+
+  /* MODAL */
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; align-items: center; justify-content: center; z-index: 200; padding: 20px; }
   .modal-backdrop.open { display: flex; }
-  .modal {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    width: 100%;
-    max-width: 480px;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-  }
-  .modal-head {
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-  .modal-head h2 {
-    font-family: 'Metal Mania', cursive;
-    font-size: 20px;
-    color: var(--gold);
-  }
-  .modal-close {
-    background: none;
-    border: none;
-    color: var(--muted);
-    font-size: 20px;
-    cursor: pointer;
-    line-height: 1;
-    padding: 4px;
-  }
+  .modal { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; width: 100%; max-width: 520px; box-shadow: 0 20px 60px rgba(0,0,0,.8); max-height: 90vh; overflow-y: auto; }
+  .modal-head { padding: 20px 24px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; background: var(--surface); z-index: 1; }
+  .modal-head h2 { font-family: 'Metal Mania', cursive; font-size: 20px; color: var(--gold); }
+  .modal-close { background: none; border: none; color: var(--muted); font-size: 20px; cursor: pointer; }
   .modal-close:hover { color: var(--white); }
   .modal-body { padding: 24px; display: flex; flex-direction: column; gap: 14px; }
   .form-row { display: flex; gap: 12px; }
   .form-group { display: flex; flex-direction: column; gap: 5px; flex: 1; }
-  .form-group label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    background: var(--skull);
-    border: 1px solid var(--border);
-    color: var(--white);
-    padding: 10px 12px;
-    border-radius: 4px;
-    font-family: 'Barlow', sans-serif;
-    font-size: 14px;
-    outline: none;
-    transition: border 0.2s;
-  }
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus { border-color: var(--red); }
+  .form-group label { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+  .form-group input, .form-group select, .form-group textarea { background: var(--skull); border: 1px solid var(--border); color: var(--white); padding: 10px 12px; border-radius: 4px; font-family: 'Barlow', sans-serif; font-size: 14px; outline: none; transition: border .2s; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--red); }
   .form-group select option { background: var(--surface); }
-  .modal-foot {
-    padding: 16px 24px;
-    border-top: 1px solid var(--border);
-    display: flex;
-    gap: 10px;
-    justify-content: flex-end;
-  }
-  .btn-cancel {
-    background: none;
-    border: 1px solid var(--border);
-    color: var(--muted);
-    padding: 9px 18px;
-    border-radius: 4px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: all 0.2s;
-  }
-  .btn-cancel:hover { border-color: #555; color: var(--white); }
-  .btn-save {
-    background: var(--red);
-    border: none;
-    color: #fff;
-    padding: 9px 22px;
-    border-radius: 4px;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.2s;
-  }
-  .btn-save:hover { background: var(--red-hot); }
-  .wishlist-check {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    cursor: pointer;
-  }
-  .wishlist-check input { accent-color: var(--gold); width: 16px; height: 16px; cursor: pointer; }
-  .wishlist-check span {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--muted);
-  }
 
-  /* ====== VALEUR TOTALE ====== */
-  .value-banner {
-    background: linear-gradient(135deg, #1a0d00 0%, #1a1000 100%);
-    border: 1px solid rgba(212,160,23,0.3);
-    border-radius: 6px;
-    padding: 16px 24px;
-    margin-bottom: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
-  .value-label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--gold);
-    opacity: 0.7;
-  }
-  .value-amount {
-    font-family: 'Metal Mania', cursive;
-    font-size: 32px;
-    color: var(--gold);
-    text-shadow: 0 0 20px rgba(212,160,23,0.3);
-  }
-  .value-breakdown {
-    display: flex;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-  .val-item { text-align: center; }
-  .val-item .num {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    font-size: 16px;
-    color: var(--white);
-  }
-  .val-item .lbl {
-    font-size: 10px;
-    color: var(--muted);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-  }
+  /* PHOTO ZONE */
+  .photo-upload-zone { border: 2px dashed var(--border); border-radius: 6px; padding: 24px 20px; text-align: center; cursor: pointer; transition: border-color .2s, background .2s; position: relative; }
+  .photo-upload-zone:hover, .photo-upload-zone.dragover { border-color: var(--red); background: rgba(192,57,43,.07); }
+  .photo-upload-zone input[type="file"] { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .upload-icon { font-size: 30px; margin-bottom: 8px; }
+  .upload-text { font-family: 'Barlow Condensed', sans-serif; font-size: 14px; font-weight: 600; letter-spacing: 1px; color: var(--muted); }
+  .upload-hint { font-size: 11px; color: var(--muted); opacity: .6; margin-top: 4px; }
+  .photo-preview-wrap { position: relative; display: inline-block; width: 100%; }
+  .photo-preview { width: 100%; max-height: 220px; object-fit: cover; border-radius: 6px; border: 1px solid var(--border); display: block; }
+  .photo-remove { position: absolute; top: 8px; right: 8px; background: rgba(0,0,0,.75); border: none; color: #fff; width: 28px; height: 28px; border-radius: 50%; cursor: pointer; font-size: 14px; display: flex; align-items: center; justify-content: center; transition: background .2s; }
+  .photo-remove:hover { background: var(--red); }
+
+  .modal-foot { padding: 16px 24px; border-top: 1px solid var(--border); display: flex; gap: 10px; justify-content: flex-end; }
+  .btn-cancel { background: none; border: 1px solid var(--border); color: var(--muted); padding: 9px 18px; border-radius: 4px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; cursor: pointer; transition: all .2s; }
+  .btn-cancel:hover { border-color: #555; color: var(--white); }
+  .btn-save { background: var(--red); border: none; color: #fff; padding: 9px 22px; border-radius: 4px; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: background .2s; }
+  .btn-save:hover { background: var(--red-hot); }
+  .wishlist-check { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+  .wishlist-check input { accent-color: var(--gold); width: 16px; height: 16px; cursor: pointer; }
+  .wishlist-check span { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+
+  /* LIGHTBOX */
+  .lightbox { position: fixed; inset: 0; background: rgba(0,0,0,.95); display: none; align-items: center; justify-content: center; z-index: 300; }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 4px; }
+  .lightbox-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: #fff; font-size: 32px; cursor: pointer; opacity: .7; }
+  .lightbox-close:hover { opacity: 1; }
 
   @media (max-width: 600px) {
     .stats-bar { display: none; }
     .header-inner { padding: 12px 16px; }
     main { padding: 16px; }
     .grid { grid-template-columns: 1fr 1fr; }
+    .form-row { flex-direction: column; }
   }
 </style>
 </head>
 <body>
 
-<!-- ====== HEADER ====== -->
 <header>
   <div class="header-inner">
     <div class="logo">
-      <svg class="logo-icon" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <svg class="logo-icon" viewBox="0 0 48 48" fill="none">
         <circle cx="24" cy="24" r="23" stroke="#d4a017" stroke-width="1.5" fill="#1a0808"/>
         <text x="24" y="20" text-anchor="middle" font-family="Metal Mania,serif" font-size="11" fill="#d4a017">GN'R</text>
         <path d="M12 26 Q14 22 17 24 Q20 26 22 23 Q24 20 26 23 Q28 26 31 24 Q34 22 36 26" stroke="#c0392b" stroke-width="1.5" fill="none" stroke-linecap="round"/>
@@ -536,39 +158,30 @@
     </div>
     <div class="header-actions">
       <div class="stats-bar">
-        <div class="stat">
-          <div class="stat-num" id="count-total">0</div>
-          <div class="stat-label">Items</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num" id="count-wish">0</div>
-          <div class="stat-label">Wishlist</div>
-        </div>
+        <div class="stat"><div class="stat-num" id="count-total">0</div><div class="stat-label">Items</div></div>
+        <div class="stat"><div class="stat-num" id="count-wish">0</div><div class="stat-label">Wishlist</div></div>
       </div>
       <button class="btn-add" onclick="openModal()">+ Ajouter</button>
     </div>
   </div>
 </header>
 
-<!-- ====== FILTERS ====== -->
 <div class="filters-wrap">
   <div class="filters-inner">
-    <button class="filter-btn active" data-cat="all" onclick="setFilter('all',this)">Tout</button>
-    <button class="filter-btn" data-cat="vinyle" onclick="setFilter('vinyle',this)">🎵 Vinyles / CDs</button>
-    <button class="filter-btn" data-cat="affiche" onclick="setFilter('affiche',this)">🖼️ Affiches</button>
-    <button class="filter-btn" data-cat="vetement" onclick="setFilter('vetement',this)">👕 Vêtements</button>
-    <button class="filter-btn" data-cat="objet" onclick="setFilter('objet',this)">🎸 Objets</button>
-    <button class="filter-btn wish-filter" data-cat="wishlist" onclick="setFilter('wishlist',this)">⭐ Wishlist</button>
+    <button class="filter-btn active" onclick="setFilter('all',this)">Tout</button>
+    <button class="filter-btn" onclick="setFilter('vinyle',this)">🎵 Vinyles / CDs</button>
+    <button class="filter-btn" onclick="setFilter('affiche',this)">🖼️ Affiches</button>
+    <button class="filter-btn" onclick="setFilter('vetement',this)">👕 Vêtements</button>
+    <button class="filter-btn" onclick="setFilter('objet',this)">🎸 Objets</button>
+    <button class="filter-btn wish-filter" onclick="setFilter('wishlist',this)">⭐ Wishlist</button>
     <div class="search-wrap">
       <span class="search-icon">🔍</span>
-      <input class="search-input" type="text" placeholder="Rechercher…" oninput="search(this.value)" id="search-box">
+      <input class="search-input" type="text" placeholder="Rechercher…" oninput="search(this.value)">
     </div>
   </div>
 </div>
 
-<!-- ====== MAIN ====== -->
 <main>
-  <!-- Valeur totale -->
   <div class="value-banner">
     <div>
       <div class="value-label">Valeur estimée</div>
@@ -581,19 +194,15 @@
       <div class="val-item"><div class="num" id="val-objet">0 €</div><div class="lbl">Objets</div></div>
     </div>
   </div>
-
-  <!-- Section header -->
   <div class="section-header">
     <span class="section-title">Ma Collection</span>
     <div class="section-line"></div>
     <span class="section-count" id="section-count">0 items</span>
   </div>
-
-  <!-- Grid -->
   <div class="grid" id="grid"></div>
 </main>
 
-<!-- ====== MODAL ====== -->
+<!-- MODAL -->
 <div class="modal-backdrop" id="modal">
   <div class="modal">
     <div class="modal-head">
@@ -601,6 +210,19 @@
       <button class="modal-close" onclick="closeModal()">✕</button>
     </div>
     <div class="modal-body">
+      <div class="form-group">
+        <label>Photo</label>
+        <div id="upload-zone" class="photo-upload-zone">
+          <input type="file" id="f-photo" accept="image/*" onchange="handlePhoto(this)">
+          <div class="upload-icon">📷</div>
+          <div class="upload-text">Clique ou glisse une photo ici</div>
+          <div class="upload-hint">JPG, PNG, HEIC — stockée dans ton navigateur</div>
+        </div>
+        <div id="preview-wrap" style="display:none" class="photo-preview-wrap">
+          <img id="preview-img" class="photo-preview" src="" alt="Aperçu">
+          <button class="photo-remove" type="button" onclick="removePhoto()">✕</button>
+        </div>
+      </div>
       <div class="form-group">
         <label>Titre *</label>
         <input type="text" id="f-title" placeholder="ex: Appetite for Destruction — Vinyle Original">
@@ -652,163 +274,186 @@
   </div>
 </div>
 
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
 <script>
 const EMOJI = { vinyle:'🎵', affiche:'🖼️', vetement:'👕', objet:'🎸' };
 const LABEL = { vinyle:'Vinyle/CD', affiche:'Affiche', vetement:'Vêtement', objet:'Objet' };
+const THUMB_BG = { vinyle:'#1a0808', affiche:'#08101a', vetement:'#081a0d', objet:'#14081a' };
 
 let items = JSON.parse(localStorage.getItem('gnr-items') || '[]');
-let editId = null;
-let currentFilter = 'all';
-let searchQuery = '';
+let editId = null, currentFilter = 'all', searchQuery = '', currentPhoto = null;
 
-// ---- Default demo items ----
 if (!items.length) {
   items = [
-    { id: 1, title: "Appetite for Destruction", cat: "vinyle", year: "1987", value: 120, state: "Excellent", notes: "Première pression US, pochette originale", wish: false },
-    { id: 2, title: "Use Your Illusion I", cat: "vinyle", year: "1991", value: 65, state: "Bon", notes: "Double vinyle, gatefold", wish: false },
-    { id: 3, title: "Illusion Tour 1992 — Poster", cat: "affiche", year: "1992", value: 200, state: "Mint", notes: "Format 60x90, jamais encadrée", wish: false },
-    { id: 4, title: "T-shirt Skull & Roses", cat: "vetement", year: "1991", value: 85, state: "Bon", notes: "Taille L, légèrement délavé", wish: false },
-    { id: 5, title: "Figurine Axl Rose NECA", cat: "objet", year: "2012", value: 150, state: "Mint", notes: "En boîte, jamais ouverte", wish: false },
-    { id: 6, title: "Use Your Illusion II", cat: "vinyle", year: "1991", value: 60, state: "Bon", notes: "", wish: true },
-    { id: 7, title: "Lies — EP Vinyle", cat: "vinyle", year: "1988", value: 45, state: "Passable", notes: "Quelques éraflures mineures", wish: false },
-    { id: 8, title: "Affiche Chinese Democracy Tour", cat: "affiche", year: "2008", value: 90, state: "Excellent", notes: "Signée à l'encre, certificat inclus", wish: true },
+    {id:1,title:"Appetite for Destruction",cat:"vinyle",year:"1987",value:120,state:"Excellent",notes:"Première pression US, pochette originale",wish:false,photo:null},
+    {id:2,title:"Use Your Illusion I",cat:"vinyle",year:"1991",value:65,state:"Bon",notes:"Double vinyle, gatefold",wish:false,photo:null},
+    {id:3,title:"Illusion Tour 1992 — Poster",cat:"affiche",year:"1992",value:200,state:"Mint",notes:"Format 60x90, jamais encadrée",wish:false,photo:null},
+    {id:4,title:"T-shirt Skull & Roses",cat:"vetement",year:"1991",value:85,state:"Bon",notes:"Taille L, légèrement délavé",wish:false,photo:null},
+    {id:5,title:"Figurine Axl Rose NECA",cat:"objet",year:"2012",value:150,state:"Mint",notes:"En boîte, jamais ouverte",wish:false,photo:null},
+    {id:6,title:"Use Your Illusion II",cat:"vinyle",year:"1991",value:60,state:"Bon",notes:"",wish:true,photo:null},
+    {id:7,title:"Lies — EP Vinyle",cat:"vinyle",year:"1988",value:45,state:"Passable",notes:"Quelques éraflures mineures",wish:false,photo:null},
+    {id:8,title:"Affiche Chinese Democracy Tour",cat:"affiche",year:"2008",value:90,state:"Excellent",notes:"Signée à l'encre, certificat inclus",wish:true,photo:null},
   ];
   save();
 }
 
 function save() { localStorage.setItem('gnr-items', JSON.stringify(items)); }
+function nextId() { return items.length ? Math.max(...items.map(i=>i.id))+1 : 1; }
+function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
 
-function nextId() { return items.length ? Math.max(...items.map(i=>i.id)) + 1 : 1; }
+// ---- PHOTO ----
+function handlePhoto(input) {
+  const file = input.files[0]; if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const img = new Image();
+    img.onload = () => {
+      const MAX=800; let w=img.width,h=img.height;
+      if(w>MAX||h>MAX){if(w>h){h=Math.round(h*MAX/w);w=MAX;}else{w=Math.round(w*MAX/h);h=MAX;}}
+      const c=document.createElement('canvas'); c.width=w; c.height=h;
+      c.getContext('2d').drawImage(img,0,0,w,h);
+      currentPhoto = c.toDataURL('image/jpeg',0.82);
+      showPreview(currentPhoto);
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+function showPreview(src) {
+  document.getElementById('upload-zone').style.display='none';
+  document.getElementById('preview-wrap').style.display='block';
+  document.getElementById('preview-img').src=src;
+}
+function removePhoto() {
+  currentPhoto=null;
+  document.getElementById('f-photo').value='';
+  document.getElementById('upload-zone').style.display='block';
+  document.getElementById('preview-wrap').style.display='none';
+  document.getElementById('preview-img').src='';
+}
+
+// Drag & drop
+window.addEventListener('DOMContentLoaded', () => {
+  const zone=document.getElementById('upload-zone');
+  zone.addEventListener('dragover',e=>{e.preventDefault();zone.classList.add('dragover');});
+  zone.addEventListener('dragleave',()=>zone.classList.remove('dragover'));
+  zone.addEventListener('drop',e=>{
+    e.preventDefault(); zone.classList.remove('dragover');
+    const f=e.dataTransfer.files[0];
+    if(f&&f.type.startsWith('image/')){
+      const dt=new DataTransfer(); dt.items.add(f);
+      document.getElementById('f-photo').files=dt.files;
+      handlePhoto(document.getElementById('f-photo'));
+    }
+  });
+});
 
 // ---- RENDER ----
 function render() {
-  const q = searchQuery.toLowerCase();
-  let visible = items.filter(item => {
-    if (currentFilter === 'wishlist') return item.wish;
-    if (currentFilter !== 'all' && item.cat !== currentFilter) return false;
-    if (q && !item.title.toLowerCase().includes(q) && !item.notes.toLowerCase().includes(q)) return false;
+  const q=searchQuery.toLowerCase();
+  let visible=items.filter(item=>{
+    if(currentFilter==='wishlist') return item.wish;
+    if(currentFilter!=='all'&&item.cat!==currentFilter) return false;
+    if(q&&!item.title.toLowerCase().includes(q)&&!(item.notes||'').toLowerCase().includes(q)) return false;
     return true;
   });
 
-  // Stats
-  document.getElementById('count-total').textContent = items.length;
-  document.getElementById('count-wish').textContent = items.filter(i=>i.wish).length;
-  document.getElementById('section-count').textContent = visible.length + ' item' + (visible.length !== 1 ? 's' : '');
+  document.getElementById('count-total').textContent=items.length;
+  document.getElementById('count-wish').textContent=items.filter(i=>i.wish).length;
+  document.getElementById('section-count').textContent=visible.length+' item'+(visible.length!==1?'s':'');
 
-  // Valeur
-  const catVal = { vinyle:0, affiche:0, vetement:0, objet:0 };
-  items.forEach(i => { if (!i.wish) catVal[i.cat] += (parseFloat(i.value)||0); });
-  const total = Object.values(catVal).reduce((a,b)=>a+b,0);
-  document.getElementById('val-total').textContent = total.toLocaleString('fr-FR') + ' €';
-  for (const [k,v] of Object.entries(catVal)) {
-    const el = document.getElementById('val-'+k);
-    if (el) el.textContent = v.toLocaleString('fr-FR') + ' €';
-  }
+  const catVal={vinyle:0,affiche:0,vetement:0,objet:0};
+  items.forEach(i=>{if(!i.wish) catVal[i.cat]+=(parseFloat(i.value)||0);});
+  document.getElementById('val-total').textContent=Object.values(catVal).reduce((a,b)=>a+b,0).toLocaleString('fr-FR')+' €';
+  for(const[k,v]of Object.entries(catVal)){const el=document.getElementById('val-'+k);if(el)el.textContent=v.toLocaleString('fr-FR')+' €';}
 
-  const grid = document.getElementById('grid');
-  if (!visible.length) {
-    grid.innerHTML = `<div class="empty-state"><div class="empty-icon">🎸</div><p>Aucun item trouvé. Welcome to the Jungle!</p></div>`;
+  const grid=document.getElementById('grid');
+  if(!visible.length){
+    grid.innerHTML=`<div class="empty-state"><div class="empty-icon">🎸</div><p>Aucun item trouvé. Welcome to the Jungle!</p></div>`;
     return;
   }
-  grid.innerHTML = visible.map(item => `
+  grid.innerHTML=visible.map(item=>`
     <div class="card${item.wish?' wishlist':''}" data-id="${item.id}">
-      <div class="card-thumb" style="background:${thumbBg(item.cat)}">
-        <span style="filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))">${EMOJI[item.cat]}</span>
+      <div class="card-thumb" style="${item.photo?'':'background:'+THUMB_BG[item.cat]}" onclick="${item.photo?`openLightbox(${item.id})`:''}">
+        ${item.photo?`<img src="${item.photo}" alt="${esc(item.title)}" loading="lazy">`:`<span class="thumb-emoji">${EMOJI[item.cat]}</span>`}
         <span class="cat-badge ${item.cat}">${LABEL[item.cat]}</span>
-        <button class="wish-star${item.wish?' active':''}" onclick="toggleWish(${item.id})" title="Wishlist">⭐</button>
+        <button class="wish-star${item.wish?' active':''}" onclick="event.stopPropagation();toggleWish(${item.id})">⭐</button>
+        ${item.photo?`<div class="photo-hint">🔍 Agrandir</div>`:''}
       </div>
       <div class="card-body">
         <div class="card-title">${esc(item.title)}</div>
-        <div class="card-sub">${[item.year, item.state].filter(Boolean).join(' · ') || '&nbsp;'}</div>
+        <div class="card-sub">${[item.year,item.state].filter(Boolean).join(' · ')||'&nbsp;'}</div>
         <div class="card-footer">
-          <div class="card-value">${item.value ? item.value.toLocaleString('fr-FR')+'€' : '—'} <span>estimé</span></div>
+          <div class="card-value">${item.value?Number(item.value).toLocaleString('fr-FR')+'€':'—'} <span>estimé</span></div>
           <div class="card-actions">
-            <button class="btn-icon" onclick="editItem(${item.id})" title="Modifier">✏️</button>
-            <button class="btn-icon del" onclick="deleteItem(${item.id})" title="Supprimer">🗑️</button>
+            <button class="btn-icon" onclick="editItem(${item.id})">✏️</button>
+            <button class="btn-icon del" onclick="deleteItem(${item.id})">🗑️</button>
           </div>
         </div>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-function thumbBg(cat) {
-  const m = { vinyle:'#1a0808', affiche:'#08101a', vetement:'#081a0d', objet:'#14081a' };
-  return m[cat] || '#111';
+// ---- LIGHTBOX ----
+function openLightbox(id) {
+  const item=items.find(i=>i.id===id);
+  if(!item||!item.photo) return;
+  document.getElementById('lightbox-img').src=item.photo;
+  document.getElementById('lightbox').classList.add('open');
 }
-
-function esc(s) {
-  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-}
+function closeLightbox() { document.getElementById('lightbox').classList.remove('open'); }
 
 // ---- FILTER / SEARCH ----
-function setFilter(cat, btn) {
-  currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-  render();
+function setFilter(cat,btn) {
+  currentFilter=cat;
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); render();
 }
-function search(q) { searchQuery = q; render(); }
+function search(q) { searchQuery=q; render(); }
 
 // ---- WISHLIST ----
 function toggleWish(id) {
-  const item = items.find(i=>i.id===id);
-  if (item) { item.wish = !item.wish; save(); render(); }
+  const item=items.find(i=>i.id===id);
+  if(item){item.wish=!item.wish;save();render();}
 }
 
 // ---- MODAL ----
-function openModal(id = null) {
-  editId = id;
-  const item = id ? items.find(i=>i.id===id) : null;
-  document.getElementById('modal-title').textContent = id ? 'Modifier l\'item' : 'Ajouter un item';
-  document.getElementById('f-title').value = item?.title || '';
-  document.getElementById('f-cat').value = item?.cat || 'vinyle';
-  document.getElementById('f-year').value = item?.year || '';
-  document.getElementById('f-value').value = item?.value || '';
-  document.getElementById('f-state').value = item?.state || '';
-  document.getElementById('f-notes').value = item?.notes || '';
-  document.getElementById('f-wish').checked = item?.wish || false;
+function openModal(id=null) {
+  editId=id;
+  const item=id?items.find(i=>i.id===id):null;
+  currentPhoto=item?.photo||null;
+  document.getElementById('modal-title').textContent=id?"Modifier l'item":"Ajouter un item";
+  document.getElementById('f-title').value=item?.title||'';
+  document.getElementById('f-cat').value=item?.cat||'vinyle';
+  document.getElementById('f-year').value=item?.year||'';
+  document.getElementById('f-value').value=item?.value||'';
+  document.getElementById('f-state').value=item?.state||'';
+  document.getElementById('f-notes').value=item?.notes||'';
+  document.getElementById('f-wish').checked=item?.wish||false;
+  document.getElementById('f-photo').value='';
+  if(currentPhoto){showPreview(currentPhoto);}else{removePhoto();}
   document.getElementById('modal').classList.add('open');
-  document.getElementById('f-title').focus();
+  setTimeout(()=>document.getElementById('f-title').focus(),50);
 }
-function closeModal() { document.getElementById('modal').classList.remove('open'); editId = null; }
+function closeModal() { document.getElementById('modal').classList.remove('open'); editId=null; currentPhoto=null; }
 function saveItem() {
-  const title = document.getElementById('f-title').value.trim();
-  if (!title) { document.getElementById('f-title').focus(); return; }
-  const data = {
-    title,
-    cat: document.getElementById('f-cat').value,
-    year: document.getElementById('f-year').value.trim(),
-    value: parseFloat(document.getElementById('f-value').value) || 0,
-    state: document.getElementById('f-state').value,
-    notes: document.getElementById('f-notes').value.trim(),
-    wish: document.getElementById('f-wish').checked,
-  };
-  if (editId) {
-    Object.assign(items.find(i=>i.id===editId), data);
-  } else {
-    items.push({ id: nextId(), ...data });
-  }
-  save(); closeModal(); render();
+  const title=document.getElementById('f-title').value.trim();
+  if(!title){document.getElementById('f-title').focus();return;}
+  const data={title,cat:document.getElementById('f-cat').value,year:document.getElementById('f-year').value.trim(),value:parseFloat(document.getElementById('f-value').value)||0,state:document.getElementById('f-state').value,notes:document.getElementById('f-notes').value.trim(),wish:document.getElementById('f-wish').checked,photo:currentPhoto};
+  if(editId){Object.assign(items.find(i=>i.id===editId),data);}else{items.push({id:nextId(),...data});}
+  try{save();}catch(e){alert('⚠️ Stockage plein. Essaie de réduire la taille des photos.');return;}
+  closeModal();render();
 }
-function editItem(id) { openModal(id); }
-function deleteItem(id) {
-  if (confirm('Supprimer cet item de la collection ?')) {
-    items = items.filter(i=>i.id!==id);
-    save(); render();
-  }
-}
+function editItem(id){openModal(id);}
+function deleteItem(id){if(confirm('Supprimer cet item ?')){items=items.filter(i=>i.id!==id);save();render();}}
 
-// Close on backdrop click
-document.getElementById('modal').addEventListener('click', e => {
-  if (e.target === document.getElementById('modal')) closeModal();
-});
-
-// Keyboard
-document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeModal();
-});
-
+document.getElementById('modal').addEventListener('click',e=>{if(e.target===document.getElementById('modal'))closeModal();});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeLightbox();}});
 render();
 </script>
 </body>
